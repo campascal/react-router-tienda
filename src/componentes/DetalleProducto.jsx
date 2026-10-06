@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router'
 
 import { buscarProducto, formatearPrecio } from '../datos/productos.js'
 
-export default function DetalleProducto() {
+export default function DetalleProducto({ agregarProducto }) {
 
   const { id } = useParams()
   const navegar = useNavigate()
@@ -26,6 +26,11 @@ export default function DetalleProducto() {
 
       </Container>
     )
+  }
+
+  function agregar() {
+    agregarProducto(producto)
+    navegar('/carrito')
   }
 
   return (
@@ -53,12 +58,24 @@ export default function DetalleProducto() {
         Stock: {producto.stock}
       </p>
 
-      <Button
-        variant="secondary"
-        onClick={() => navegar(-1)}
-      >
-        Volver
-      </Button>
+      <div className="d-flex gap-2">
+
+        <Button
+          variant="primary"
+          onClick={agregar}
+          disabled={producto.stock === 0}
+        >
+          Agregar al carrito
+        </Button>
+
+        <Button
+          variant="secondary"
+          onClick={() => navegar(-1)}
+        >
+          Volver
+        </Button>
+
+      </div>
 
     </Container>
   )

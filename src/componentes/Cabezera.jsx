@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { NavLink } from 'react-router'
 
-function Cabezera() {
+function Cabezera({ cantidadCarrito }) {
 
   const [abierta, setAbierta] = useState(false)
 
@@ -17,6 +17,7 @@ function Cabezera() {
       expanded={abierta}
       onToggle={setAbierta}
     >
+
       <Container>
 
         <Navbar.Brand href="#">
@@ -29,20 +30,44 @@ function Cabezera() {
 
           <Nav className="ms-auto">
 
-            <Nav.Link as={NavLink} to="/" onClick={cerrar}>
+            <Nav.Link
+              as={NavLink}
+              to="/"
+              onClick={cerrar}
+            >
               Inicio
             </Nav.Link>
 
-            <Nav.Link as={NavLink} to="/catalogo" onClick={cerrar}>
+            <Nav.Link
+              as={NavLink}
+              to="/catalogo"
+              onClick={cerrar}
+            >
               Catálogo
             </Nav.Link>
 
-            <Nav.Link as={NavLink} to="/nosotros" onClick={cerrar}>
+            <Nav.Link
+              as={NavLink}
+              to="/nosotros"
+              onClick={cerrar}
+            >
               Nosotros
             </Nav.Link>
 
-            <Nav.Link as={NavLink} to="/contacto" onClick={cerrar}>
+            <Nav.Link
+              as={NavLink}
+              to="/contacto"
+              onClick={cerrar}
+            >
               Contacto
+            </Nav.Link>
+
+            <Nav.Link
+              as={NavLink}
+              to="/carrito"
+              onClick={cerrar}
+            >
+              Carrito ({cantidadCarrito})
             </Nav.Link>
 
           </Nav>
@@ -50,6 +75,7 @@ function Cabezera() {
         </Navbar.Collapse>
 
       </Container>
+
     </Navbar>
   )
 }
