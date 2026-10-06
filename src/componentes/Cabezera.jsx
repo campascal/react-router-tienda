@@ -33,6 +33,10 @@ function Cabezera() {
               Inicio
             </Nav.Link>
 
+            <Nav.Link as={NavLink} to="/catalogo" onClick={cerrar}>
+              Catálogo
+            </Nav.Link>
+
             <Nav.Link as={NavLink} to="/nosotros" onClick={cerrar}>
               Nosotros
             </Nav.Link>
